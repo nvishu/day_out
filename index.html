@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>💌 A Special Invitation from Nishant</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --rose:        #e8829a;
+      --deep-rose:   #b5485a;
+      --rose-gold:   #c9956c;
+      --pale-pink:   #ffd6e0;
+      --blush:       #ffc3d4;
+      --dark-bg:     #0d0208;
+      --card-bg:     rgba(45, 8, 22, 0.82);
+      --border:      rgba(220, 130, 154, 0.35);
+      --text-glow:   rgba(200,100,130,0.4);
+    }
+
+    body {
+      overflow: hidden;
+      background: var(--dark-bg);
+      font-family: 'Jost', sans-serif;
+      color: white;
+      cursor: default;
+    }
+
+    /* ═══════════════════════════ TOP BADGE ═══════════════════════════ */
+    .status-badge {
+      position: fixed;
+      top: 22px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(15, 3, 10, 0.75);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      padding: 7px 26px;
+      border-radius: 40px;
+      font-size: 0.78rem;
+      font-weight: 400;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--rose);
+      border: 1px solid var(--border);
+      z-index: 30;
+      pointer-events: none;
+      white-space: nowrap;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,200,215,0.08);
+    }
+
+    /* ═══════════════════════════ CARD ═══════════════════════════ */
+    .ui-container {
+      position: fixed;
+      bottom: 7%;
+      left: 0;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      z-index: 25;
+      pointer-events: none;
+      padding: 0 16px;
+    }
+
+    .question-card {
+      background: var(--card-bg);
+      backdrop-filter: blur(28px);
+      -webkit-backdrop-filter: blur(28px);
+      border-radius: 28px;
+      padding: 40px 52px 36px;
+      max-width: 660px;
+      width: 100%;
+      text-align: center;
+      border: 1px solid var(--border);
+      box-shadow:
+        0 32px 80px rgba(0,0,0,0.55),
+        0 0 50px rgba(200,80,120,0.12),
+        inset 0 1px 0 rgba(255,215,225,0.10),
+        inset 0 -1px 0 rgba(0,0,0,0.3);
+      pointer-events: auto;
+      animation: cardReveal 0.65s cubic-bezier(0.22,1,0.36,1) both;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .question-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(220,150,170,0.6), var(--rose-gold), rgba(220,150,170,0.6), transparent);
+    }
+
+    @keyframes cardReveal {
+      from { opacity: 0; transform: translateY(55px) scale(0.94); }
+      to   { opacity: 1; transform: translateY(0)   scale(1); }
+    }
+
+    .card-emoji {
+      font-size: 2.4rem;
+      margin-bottom: 14px;
+      display: block;
+      animation: emojiBounce 2.4s ease-in-out infinite;
+    }
+
+    @keyframes emojiBounce {
+      0%, 100% { transform: translateY(0) scale(1); }
+      50%       { transform: translateY(-6px) scale(1.08); }
+    }
+
+    .question-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.85rem;
+      font-weight: 600;
+      line-height: 1.5;
+      margin-bottom: 34px;
+      background: linear-gradient(145deg, #ffeef4 20%, var(--rose) 55%, var(--rose-gold) 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      letter-spacing: 0.01em;
+    }
+
+    /* ═══════════════════════════ BUTTONS ═══════════════════════════ */
+    .button-group {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 14px 36px;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 500;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: transform 0.28s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.28s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255,255,255,0.15) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .btn-yes {
+      background: linear-gradient(135deg, var(--deep-rose), var(--rose), var(--rose-gold));
+      color: white;
+      box-shadow: 0 8px 28px rgba(180,60,90,0.45), inset 0 1px 0 rgba(255,255,255,0.2);
+    }
+
+    .btn-yes:hover {
+      transform: translateY(-4px) scale(1.06);
+      box-shadow: 0 16px 40px rgba(180,60,90,0.6), inset 0 1px 0 rgba(255,255,255,0.2);
+    }
+
+    .btn-yes:active { transform: scale(0.97); }
+
+    .btn-no {
+      background: rgba(60, 12, 28, 0.7);
+      color: var(--blush);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+      border: 1px solid rgba(200,100,130,0.3);
+    }
+
+    .btn-no:hover {
+      transform: translateY(-3px);
+      background: rgba(80, 18, 36, 0.8);
+      border-color: rgba(200,100,130,0.6);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+    }
+
+    .btn-no:active { transform: scale(0.97); }
+
+    /* ═══════════════════════════ HINT ═══════════════════════════ */
+    .hint {
+      position: fixed;
+      bottom: 18px; right: 22px;
+      font-size: 0.68rem;
+      letter-spacing: 1px;
+      opacity: 0.35;
+      color: var(--rose);
+      z-index: 20;
+      pointer-events: none;
+      text-transform: uppercase;
+    }
+
+    /* ═══════════════════════════ CELEBRATION HEARTS ═══════════════════════════ */
+    @keyframes heartFall {
+      0%   { top: -40px; opacity: 1; transform: translateX(0) rotate(0deg) scale(1); }
+      85%  { opacity: 0.9; }
+      100% { top: 110vh; opacity: 0; transform: translateX(var(--drift)) rotate(var(--spin)) scale(0.4); }
+    }
+
+    .heart-particle {
+      position: fixed;
+      top: -40px;
+      font-size: var(--size);
+      z-index: 999;
+      pointer-events: none;
+      animation: heartFall var(--dur) ease-in forwards;
+    }
+
+    /* ═══════════════════════════ PROGRESS DOTS ═══════════════════════════ */
+    .progress-dots {
+      display: flex;
+      gap: 5px;
+      justify-content: center;
+      margin-top: 22px;
+    }
+
+    .dot {
+      width: 5px; height: 5px;
+      border-radius: 50%;
+      background: var(--border);
+      transition: background 0.3s, transform 0.3s;
+    }
+
+    .dot.active {
+      background: var(--rose);
+      transform: scale(1.4);
+    }
+
+    /* ═══════════════════════════ RESPONSIVE ═══════════════════════════ */
+    @media (max-width: 580px) {
+      .question-card  { padding: 28px 22px 24px; border-radius: 22px; }
+      .question-text  { font-size: 1.4rem; margin-bottom: 24px; }
+      .btn            { padding: 12px 26px; font-size: 0.85rem; }
+      .card-emoji     { font-size: 2rem; }
+      .status-badge   { font-size: 0.7rem; padding: 6px 18px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="status-badge" id="statusBadge">🌸 A Special Message for You</div>
+  <div class="ui-container" id="uiContainer"></div>
+  <div class="hint">✦ 3D World · With love from Nishant ✦</div>
+
+  <!-- Three.js import map -->
+  <script type="importmap">
+  {
+    "imports": {
+      "three":           "https://unpkg.com/three@0.128.0/build/three.module.js",
+      "three/addons/":   "https://unpkg.com/three@0.128.0/examples/jsm/"
+    }
+  }
+  </script>
+
+  <script type="module">
+    import * as THREE from 'three';
+    import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+
+    /* ══════════════════ 3D SCENE ══════════════════ */
+    const scene    = new THREE.Scene();
+    scene.background = new THREE.Color(0x0d0208);
+    scene.fog        = new THREE.FogExp2(0x0d0208, 0.009);
+
+    const camera = new THREE.PerspectiveCamera(44, innerWidth / innerHeight, 0.1, 800);
+    camera.position.set(4.5, 3.5, 9.5);
+    camera.lookAt(0, 1.2, 0);
+
+    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: false });
+    renderer.setSize(innerWidth, innerHeight);
+    renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+    renderer.shadowMap.enabled = true;
+    renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+    renderer.toneMapping = THREE.ACESFilmicToneMapping;
+    renderer.toneMappingExposure = 1.1;
+    document.body.appendChild(renderer.domElement);
+    renderer.domElement.style.position = 'fixed';
+    renderer.domElement.style.top = '0';
+    renderer.domElement.style.left = '0';
+    renderer.domElement.style.zIndex = '0';
+
+    const controls = new OrbitControls(camera, renderer.domElement);
+    controls.enableDamping    = true;
+    controls.dampingFactor    = 0.04;
+    controls.autoRotate       = true;
+    controls.autoRotateSpeed  = 0.6;
+    controls.enablePan        = false;
+    controls.enableZoom       = true;
+    controls.minDistance      = 5;
+    controls.maxDistance      = 20;
+    controls.target.set(0, 1.2, 0);
+
+    /* ── Lighting ── */
+    const ambient = new THREE.AmbientLight(0x1c0812, 3);
+    scene.add(ambient);
+
+    const sun = new THREE.DirectionalLight(0xfff0f5, 1.4);
+    sun.position.set(4, 8, 5);
+    sun.castShadow = true;
+    sun.shadow.mapSize.set(1024, 1024);
+    scene.add(sun);
+
+    const pinkPt = new THREE.PointLight(0xff69b4, 2.5, 14);
+    pinkPt.position.set(2, 3, 4);
+    scene.add(pinkPt);
+
+    const rosegoldPt = new THREE.PointLight(0xc9956c, 2.2, 12);
+    rosegoldPt.position.set(-3, 2, 2);
+    scene.add(rosegoldPt);
+
+    const deepRosePt = new THREE.PointLight(0xb5485a, 1.4, 8);
+    deepRosePt.position.set(-1, 0, -4);
+    scene.add(deepRosePt);
+
+    /* ── Core sculpture group ── */
+    const coreGroup = new THREE.Group();
+    coreGroup.position.y = 1.2;
+    scene.add(coreGroup);
+
+    // Central gem — rose gold icosahedron
+    const gemGeo  = new THREE.IcosahedronGeometry(0.82, 1);
+    const gemMat  = new THREE.MeshStandardMaterial({
+      color: 0xd4849a, emissive: 0x7a1830, emissiveIntensity: 0.55,
+      metalness: 0.92, roughness: 0.08
+    });
+    const gem = new THREE.Mesh(gemGeo, gemMat);
+    gem.castShadow = true;
+    coreGroup.add(gem);
+
+    // Inner glow sphere
+    const glowSphere = new THREE.Mesh(
+      new THREE.SphereGeometry(0.65, 32, 32),
+      new THREE.MeshStandardMaterial({
+        color: 0xff6b9d, emissive: 0xff3366, emissiveIntensity: 0.9,
+        transparent: true, opacity: 0.18, metalness: 0.1, roughness: 1
+      })
+    );
+    coreGroup.add(glowSphere);
+
+    // Ring 1 — deep rose horizontal
+    const mkRing = (radius, tube, col, emCol, emInt, rx, ry, rz) => {
+      const m = new THREE.Mesh(
+        new THREE.TorusGeometry(radius, tube, 64, 240),
+        new THREE.MeshStandardMaterial({ color: col, emissive: emCol, emissiveIntensity: emInt, metalness: 0.75, roughness: 0.15 })
+      );
+      m.rotation.set(rx, ry, rz);
+      return m;
+    };
+
+    const ring1 = mkRing(1.15, 0.045, 0xe8829a, 0x6b1030, 0.55, Math.PI/2, 0, 0);
+    coreGroup.add(ring1);
+
+    const ring2 = mkRing(1.42, 0.032, 0xc9956c, 0x5a2812, 0.45, 0.75, 0, Math.PI/3.5);
+    coreGroup.add(ring2);
+
+    const ring3 = mkRing(1.72, 0.022, 0xffc3d4, 0x7b1040, 0.3, 1.25, 0.4, -0.2);
+    coreGroup.add(ring3);
+
+    // Orbiting gemlets
+    const gemlets = [];
+    for (let i = 0; i < 16; i++) {
+      const g = new THREE.Mesh(
+        new THREE.OctahedronGeometry(0.072, 0),
+        new THREE.MeshStandardMaterial({ color: 0xffd6e0, emissive: 0x8b1030, emissiveIntensity: 0.7, metalness: 0.8, roughness: 0.1 })
+      );
+      const angle = (i / 16) * Math.PI * 2;
+      const r = 1.55;
+      g.position.set(Math.cos(angle) * r, Math.sin(angle * 1.6) * 0.55, Math.sin(angle) * r);
+      coreGroup.add(g);
+      gemlets.push({ mesh: g, offset: angle });
+    }
+
+    /* ── Far field star particles ── */
+    const starCount = 1800;
+    const starPos = new Float32Array(starCount * 3);
+    for (let i = 0; i < starCount; i++) {
+      starPos[i*3]   = (Math.random() - 0.5) * 90;
+      starPos[i*3+1] = (Math.random() - 0.5) * 35;
+      starPos[i*3+2] = (Math.random() - 0.5) * 50 - 15;
+    }
+    const starGeo = new THREE.BufferGeometry();
+    starGeo.setAttribute('position', new THREE.BufferAttribute(starPos, 3));
+    const starField = new THREE.Points(starGeo,
+      new THREE.PointsMaterial({ color: 0xe8829a, size: 0.065, transparent: true, opacity: 0.55 })
+    );
+    scene.add(starField);
+
+    /* ── Near sparkles (adore blending) ── */
+    const spCount = 500;
+    const spPos = new Float32Array(spCount * 3);
+    for (let i = 0; i < spCount; i++) {
+      spPos[i*3]   = (Math.random() - 0.5) * 16;
+      spPos[i*3+1] = (Math.random() - 0.5) * 7 + 1;
+      spPos[i*3+2] = (Math.random() - 0.5) * 13;
+    }
+    const spGeo = new THREE.BufferGeometry();
+    spGeo.setAttribute('position', new THREE.BufferAttribute(spPos, 3));
+    const sparkles = new THREE.Points(spGeo,
+      new THREE.PointsMaterial({ color: 0xffc3d4, size: 0.048, transparent: true, opacity: 0.85, blending: THREE.AdditiveBlending })
+    );
+    scene.add(sparkles);
+
+    /* ── Subtle rose gold ground grid ── */
+    const grid = new THREE.GridHelper(24, 24, 0xb5485a, 0x3a0c1a);
+    grid.position.y = -0.55;
+    grid.material.transparent = true;
+    grid.material.opacity = 0.18;
+    scene.add(grid);
+
+    /* ── Floating petal planes (billboard quads) ── */
+    const petalMat = new THREE.MeshBasicMaterial({ color: 0xff85b3, transparent: true, opacity: 0.14, side: THREE.DoubleSide });
+    const petalGeo = new THREE.PlaneGeometry(0.28, 0.22);
+    const petalMeshes = [];
+    for (let i = 0; i < 30; i++) {
+      const p = new THREE.Mesh(petalGeo, petalMat.clone());
+      p.position.set((Math.random()-0.5)*12, Math.random()*4, (Math.random()-0.5)*10);
+      p.rotation.set(Math.random()*Math.PI, Math.random()*Math.PI, Math.random()*Math.PI);
+      scene.add(p);
+      petalMeshes.push({ mesh: p, vy: -0.004 - Math.random()*0.003, vr: (Math.random()-0.5)*0.018 });
+    }
+
+    /* ══════════════════ QUESTION TREE ══════════════════ */
+    const Q = new Map([
+      ['start', {
+        emoji: '🌸',
+        text: "Hey you... Nishant has something beautiful to tell you.\nAre you ready to hear it?",
+        yes: 'main_ask', no: 'tease1',
+        yL: '💗 Yes, I\'m ready!', nL: '😊 Hmm, maybe...'
+      }],
+      ['tease1', {
+        emoji: '🥺',
+        text: "Oh come on! I built this whole little pink world just for you... Peek inside?",
+        yes: 'main_ask', no: 'tease2',
+        yL: '💖 Okay, go ahead!', nL: '😶 One moment...'
+      }],
+      ['tease2', {
+        emoji: '💌',
+        text: "I've been thinking about this for a while. I promise you won't regret it 🌹",
+        yes: 'main_ask', no: 'tease3',
+        yL: '✨ Alright then!', nL: '🌸 Fine, fine...'
+      }],
+      ['tease3', {
+        emoji: '🌹',
+        text: "Everything here — every petal, every star — is for you. Just say yes? 💕",
+        yes: 'main_ask', no: 'main_ask',
+        yL: '💕 Yes!', nL: '🌺 ...okay fine!'
+      }],
+
+      /* ── THE MAIN ASK ── */
+      ['main_ask', {
+        emoji: '💕',
+        text: "Will you join me for a special day out together? ☀️\nJust you and me?",
+        yes: 'celebration_yes', no: 'think_again',
+        yL: '💖 Yes, I\'d love to!', nL: '🤔 Let me think...'
+      }],
+      ['think_again', {
+        emoji: '💭',
+        text: "Think again...? I've planned something truly special for you 🌸",
+        yes: 'celebration_yes', no: 'sachi',
+        yL: '✨ Yes, let\'s go!', nL: '😔 Still not sure...'
+      }],
+      ['sachi', {
+        emoji: '💔',
+        text: "Sach mein nahi jaana? 🥺\n(You really don't want to come?)",
+        yes: 'p1', no: 'p2',
+        yL: '😔 Yeah, maybe not...', nL: '💗 Actually, maybe I do!'
+      }],
+
+      /* ── PERSUASION CHAIN ── */
+      ['p1', {
+        emoji: '🌅',
+        text: "I found the most beautiful sunset spot in the city...\nImagine us watching it together 🌅",
+        yes: 'celebration_yes', no: 'p2',
+        yL: '💖 Okay yes!', nL: '🤔 Keep going...'
+      }],
+      ['p2', {
+        emoji: '☕',
+        text: "There's this cozy hidden café I've been saving for a special someone...\nThat someone is you ☕",
+        yes: 'celebration_yes', no: 'p3',
+        yL: '💕 That sounds lovely!', nL: '🌸 Tell me more...'
+      }],
+      ['p3', {
+        emoji: '🍦',
+        text: "I'll get you your absolute favourite ice cream 🍦\nWe'll walk and eat and laugh all afternoon.",
+        yes: 'celebration_yes', no: 'p4',
+        yL: '✨ Yes please!', nL: '😊 Hmm...'
+      }],
+      ['p4', {
+        emoji: '🌷',
+        text: "I'll bring fresh flowers 🌷 and your favourite snack.\nNow are you saying yes?",
+        yes: 'celebration_yes', no: 'p5',
+        yL: '💖 Flowers? Yes!', nL: '🤔 Maybe...'
+      }],
+      ['p5', {
+        emoji: '😄',
+        text: "I promise to make you laugh so much that your cheeks will hurt 😄\nIsn't that worth a yes?",
+        yes: 'celebration_yes', no: 'p6',
+        yL: '💕 Haha, okay YES!', nL: '🌸 Almost...'
+      }],
+      ['p6', {
+        emoji: '✨',
+        text: "I found the most magical hidden spot in the city ✨\nOnly you deserve to see it first.",
+        yes: 'celebration_yes', no: 'p7',
+        yL: '💗 I want to see it!', nL: '🥺 Keep convincing...'
+      }],
+      ['p7', {
+        emoji: '🎁',
+        text: "There's a surprise gift waiting for you...\nbut only if you come 🎁 Curious?",
+        yes: 'celebration_yes', no: 'p8',
+        yL: '✨ I\'m intrigued!', nL: '🌺 Still not sure...'
+      }],
+      ['p8', {
+        emoji: '💫',
+        text: "Just you, me, good vibes and city lights 💫\nDoesn't that sound absolutely perfect?",
+        yes: 'celebration_yes', no: 'p9',
+        yL: '💖 It does!', nL: '🤔 What else?'
+      }],
+      ['p9', {
+        emoji: '🌊',
+        text: "We can walk by the water, feel the breeze...\njust breathe and enjoy the world together 🌊",
+        yes: 'celebration_yes', no: 'p10',
+        yL: '💕 Let\'s do it!', nL: '😶 Hmm...'
+      }],
+      ['p10', {
+        emoji: '🎨',
+        text: "We can sketch, wander, explore, or just sit and talk for hours 🎨\nYour choice entirely!",
+        yes: 'celebration_yes', no: 'p11',
+        yL: '✨ I love that idea!', nL: '🌸 Almost there...'
+      }],
+      ['p11', {
+        emoji: '🍕',
+        text: "Your favourite food, your favourite place, your rules 🍕\nI'll plan everything around you.",
+        yes: 'celebration_yes', no: 'p12',
+        yL: '💗 Okay yes then!', nL: '🥺 One more...'
+      }],
+      ['p12', {
+        emoji: '🌙',
+        text: "Or an evening out — city lights, warm air, the whole mood 🌙\nTempting enough?",
+        yes: 'celebration_yes', no: 'p13',
+        yL: '💖 Yes, evening yes!', nL: '😊 Continue...'
+      }],
+      ['p13', {
+        emoji: '🤝',
+        text: "Pinky promise it'll be the most unforgettable day 🤞\nDon't you trust me just a little?",
+        yes: 'celebration_yes', no: 'p14',
+        yL: '💕 I do trust you!', nL: '🌸 Almost...'
+      }],
+      ['p14', {
+        emoji: '🥺',
+        text: "It would genuinely mean everything to me if you said yes...\nJust one day? 🥺",
+        yes: 'celebration_yes', no: 'p15',
+        yL: '💖 Okay, yes!', nL: '😔 Hmm...'
+      }],
+      ['p15', {
+        emoji: '💖',
+        text: "Because you are amazing company and this day deserves someone amazing 💖\nThat someone is you.",
+        yes: 'celebration_yes', no: 'p16',
+        yL: '✨ Aww, yes!', nL: '🌺 More...'
+      }],
+      ['p16', {
+        emoji: '🌟',
+        text: "Stars, the city, laughter, and us ✨\nOne magical day. Last chance to say yes?",
+        yes: 'celebration_yes', no: 'p17',
+        yL: '💕 YES!', nL: '😅 One last try...'
+      }],
+      ['p17', {
+        emoji: '💐',
+        text: "I already mentally picked a flower for your hair 💐\nDon't let it go to waste...",
+        yes: 'celebration_yes', no: 'p18',
+        yL: '💗 That\'s so sweet, yes!', nL: '🥺 Almost...'
+      }],
+      ['p18', {
+        emoji: '🎶',
+        text: "I have a whole playlist ready just for our drive 🎶\nDon't you want to hear what I made for you?",
+        yes: 'celebration_yes', no: 'p19',
+        yL: '✨ Yes, play it!', nL: '😊 One more...'
+      }],
+      ['p19', {
+        emoji: '🧁',
+        text: "There's a bakery with the most incredible cupcakes 🧁\nOnly one way to try them...",
+        yes: 'celebration_yes', no: 'p20',
+        yL: '💖 Cupcakes?! YES!', nL: '😔 Last one...'
+      }],
+      ['p20', {
+        emoji: '💝',
+        text: "With all my heart, my final ask 💝\nPlease will you join me for a day out?",
+        yes: 'celebration_yes', no: 'final_refuse',
+        yL: '💖 YES, I will!', nL: '😢 No, sorry...'
+      }],
+
+      /* ── FINALS ── */
+      ['celebration_yes', {
+        emoji: '🎉',
+        text: "She said YES! 💖\nYou've made me the happiest!\nTomorrow is going to be absolutely magical.\nI can't wait to see you! ❤️",
+        isFinal: true, isYes: true
+      }],
+      ['final_refuse', {
+        emoji: '🌙',
+        text: "I respect your decision 🌙\nMaybe another time, another day...\nThe invitation will always stay open 💌✨",
+        isFinal: true, isYes: false
+      }]
+    ]);
+
+    /* ══════════════════ EMAIL NOTIFICATION ══════════════════ */
+    async function notifyNishant() {
+      try {
+        const res = await fetch('https://formsubmit.co/ajax/nishantvishu55@gmail.com', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify({
+            name: '💌 Day Out Invitation',
+            _subject: '💖 SHE SAID YES! Your Invitation Was Accepted!',
+            message:
+              '🎉🎉 AMAZING NEWS, Nishant! 🎉🎉\n\n' +
+              'She said YES to your special day out invitation!\n\n' +
+              'Time to start planning something truly magical! 🌹\n\n' +
+              '— Sent automatically from your 3D Invitation Website ✨'
+          })
+        });
+        const data = await res.json();
+        console.log('📧 Email sent:', data);
+      } catch (err) {
+        console.warn('Email notification failed (first-time verify required):', err);
+      }
+    }
+
+    /* ══════════════════ CELEBRATION EFFECTS ══════════════════ */
+    const EMOJIS = ['❤️','💖','🌸','🌹','💕','✨','🌺','🎀','💝','🌷'];
+    let celebrationTimer = null;
+
+    function spawnHeart() {
+      const el = document.createElement('span');
+      const size = 14 + Math.random() * 24;
+      const dur  = 3.5 + Math.random() * 3;
+      const drift = ((Math.random() - 0.5) * 200) + 'px';
+      const spin  = ((Math.random() - 0.5) * 540) + 'deg';
+      el.className = 'heart-particle';
+      el.style.setProperty('--size', size + 'px');
+      el.style.setProperty('--dur',  dur + 's');
+      el.style.setProperty('--drift', drift);
+      el.style.setProperty('--spin',  spin);
+      el.style.left = Math.random() * 100 + 'vw';
+      el.textContent = EMOJIS[Math.floor(Math.random() * EMOJIS.length)];
+      document.body.appendChild(el);
+      setTimeout(() => el.remove(), dur * 1000);
+    }
+
+    function startCelebration() {
+      pinkPt.intensity    = 5;
+      rosegoldPt.intensity = 5;
+      controls.autoRotateSpeed = 2.5;
+      gemMat.emissiveIntensity = 1.2;
+      if (!celebrationTimer) {
+        for (let i = 0; i < 20; i++) setTimeout(spawnHeart, i * 80);
+        celebrationTimer = setInterval(spawnHeart, 280);
+        setTimeout(() => { clearInterval(celebrationTimer); celebrationTimer = null; }, 9000);
+      }
+    }
+
+    function stopCelebration() {
+      clearInterval(celebrationTimer);
+      celebrationTimer = null;
+      pinkPt.intensity    = 2.5;
+      rosegoldPt.intensity = 2.2;
+      controls.autoRotateSpeed = 0.6;
+      gemMat.emissiveIntensity = 0.55;
+    }
+
+    /* ══════════════════ UI STATE ══════════════════ */
+    const TOTAL_STEPS = 24;
+    let currentId  = 'start';
+    let stepCount  = 0;
+
+    function renderCard() {
+      const node = Q.get(currentId);
+      if (!node) return;
+
+      const isFinal = !!node.isFinal;
+
+      // Update badge
+      const badge = document.getElementById('statusBadge');
+      if (isFinal) {
+        badge.textContent = node.isYes ? '💖 She said YES!' : '🌙 Until next time...';
+      } else {
+        stepCount++;
+        badge.textContent = `🌸 Step ${stepCount} · Nishant's Invitation`;
+      }
+
+      // Build dots
+      const totalDots = Math.min(stepCount + 3, TOTAL_STEPS);
+      const dotsHtml  = Array.from({ length: totalDots }, (_, i) =>
+        `<div class="dot${i === stepCount - 1 ? ' active' : ''}"></div>`
+      ).join('');
+
+      // Build buttons
+      let btnHtml = '';
+      if (!isFinal) {
+        const yL = node.yL || '💖 Yes!';
+        const nL = node.nL || '🤔 Not yet...';
+        btnHtml = `
+          <div class="button-group">
+            <button class="btn btn-yes" id="yBtn">${yL}</button>
+            <button class="btn btn-no"  id="nBtn">${nL}</button>
+          </div>
+          <div class="progress-dots">${dotsHtml}</div>`;
+      } else {
+        btnHtml = `
+          <div class="button-group">
+            <button class="btn btn-yes" id="restartBtn">🔄 Start Over</button>
+          </div>`;
+      }
+
+      document.getElementById('uiContainer').innerHTML = `
+        <div class="question-card">
+          <span class="card-emoji">${node.emoji}</span>
+          <div class="question-text">${node.text.replace(/\n/g, '<br>')}</div>
+          ${btnHtml}
+        </div>`;
+
+      // Attach events
+      if (!isFinal) {
+        document.getElementById('yBtn').onclick = () => go(node.yes);
+        document.getElementById('nBtn').onclick = () => go(node.no);
+      } else {
+        document.getElementById('restartBtn').onclick = () => {
+          currentId = 'start'; stepCount = 0;
+          stopCelebration();
+          renderCard();
+        };
+        if (node.isYes) {
+          startCelebration();
+          notifyNishant();
+        }
+      }
+    }
+
+    function go(id) {
+      currentId = id || 'start';
+      renderCard();
+    }
+
+    /* ══════════════════ ANIMATION LOOP ══════════════════ */
+    let t = 0;
+    function animate() {
+      requestAnimationFrame(animate);
+      t += 0.01;
+
+      // Core group sway
+      coreGroup.rotation.y = t * 0.22;
+      coreGroup.rotation.x = Math.sin(t * 0.18) * 0.07;
+
+      // Rings independent spin
+      ring1.rotation.z += 0.007;
+      ring2.rotation.x += 0.005;
+      ring2.rotation.y += 0.004;
+      ring3.rotation.z -= 0.004;
+      ring3.rotation.x += 0.003;
+
+      // Gemlets pulse
+      gemlets.forEach(({ mesh, offset }, i) => {
+        mesh.rotation.x += 0.02;
+        mesh.rotation.y += 0.015;
+        mesh.position.y = Math.sin(t * 1.2 + offset) * 0.55;
+      });
+
+      // Gem shimmer
+      gemMat.emissiveIntensity = 0.45 + Math.sin(t * 2.5) * 0.15;
+      glowSphere.material.opacity = 0.12 + Math.sin(t * 1.8) * 0.06;
+
+      // Particle drift
+      starField.rotation.y  = t * 0.012;
+      sparkles.rotation.x   = Math.sin(t * 0.07) * 0.08;
+      sparkles.rotation.y   = t * 0.018;
+
+      // Pink light orbit
+      pinkPt.position.x = 2.5 + Math.cos(t * 0.8) * 2;
+      pinkPt.position.z = 3 + Math.sin(t * 0.8) * 2;
+
+      // Petal drift
+      petalMeshes.forEach(p => {
+        p.mesh.position.y += p.vy;
+        p.mesh.rotation.z += p.vr;
+        if (p.mesh.position.y < -3) p.mesh.position.y = 5;
+      });
+
+      controls.update();
+      renderer.render(scene, camera);
+    }
+
+    animate();
+    renderCard();
+
+    window.addEventListener('resize', () => {
+      camera.aspect = innerWidth / innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(innerWidth, innerHeight);
+    });
+
+    console.log('%c🌹 With love from Nishant 💌', 'color:#e8829a;font-size:14px;font-family:Georgia');
+  </script>
+</body>
+</html>
