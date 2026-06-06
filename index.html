@@ -15,7 +15,7 @@
       --pale-pink:   #ffd6e0;
       --blush:       #ffc3d4;
       --dark-bg:     #0d0208;
-      --card-bg:     rgba(45, 8, 22, 0.82);
+      --card-bg:     rgba(25, 5, 15, 0.18);
       --border:      rgba(220, 130, 154, 0.35);
       --text-glow:   rgba(200,100,130,0.4);
     }
@@ -59,40 +59,36 @@
       width: 100%;
       display: flex;
       justify-content: center;
-      align-items: flex-end;
+      align-items: center;
       z-index: 25;
       pointer-events: none;
       padding: 0 16px;
     }
 
-    .question-card {
-      background: var(--card-bg);
-      backdrop-filter: blur(28px);
-      -webkit-backdrop-filter: blur(28px);
-      border-radius: 28px;
-      padding: 40px 52px 36px;
-      max-width: 660px;
+    
+.question-card {
+      background: transparent;
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+      border-radius: 0;
+      padding: 20px;
+      max-width: 760px;
       width: 100%;
       text-align: center;
-      border: 1px solid var(--border);
-      box-shadow:
-        0 32px 80px rgba(0,0,0,0.55),
-        0 0 50px rgba(200,80,120,0.12),
-        inset 0 1px 0 rgba(255,215,225,0.10),
-        inset 0 -1px 0 rgba(0,0,0,0.3);
+      border: none;
+      box-shadow: none;
       pointer-events: auto;
       animation: cardReveal 0.65s cubic-bezier(0.22,1,0.36,1) both;
       position: relative;
-      overflow: hidden;
-    }
+      overflow: visible;
+}
 
-    .question-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(220,150,170,0.6), var(--rose-gold), rgba(220,150,170,0.6), transparent);
-    }
+
+    
+.question-card::before {
+ content:none;
+}
+
 
     @keyframes cardReveal {
       from { opacity: 0; transform: translateY(55px) scale(0.94); }
@@ -121,6 +117,7 @@
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
+      filter: drop-shadow(0 0 12px rgba(0,0,0,0.9));
       letter-spacing: 0.01em;
     }
 
@@ -159,6 +156,10 @@
       background: linear-gradient(135deg, var(--deep-rose), var(--rose), var(--rose-gold));
       color: white;
       box-shadow: 0 8px 28px rgba(180,60,90,0.45), inset 0 1px 0 rgba(255,255,255,0.2);
+    }
+
+    .btn-yes {
+      box-shadow: 0 0 15px rgba(232,130,154,.7), 0 0 35px rgba(232,130,154,.5);
     }
 
     .btn-yes:hover {
@@ -235,18 +236,135 @@
 
     /* ═══════════════════════════ RESPONSIVE ═══════════════════════════ */
     @media (max-width: 580px) {
-      .question-card  { padding: 28px 22px 24px; border-radius: 22px; }
+      
+.question-card {
+      background: transparent;
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+      border-radius: 0;
+      padding: 20px;
+      max-width: 760px;
+      width: 100%;
+      text-align: center;
+      border: none;
+      box-shadow: none;
+      pointer-events: auto;
+      animation: cardReveal 0.65s cubic-bezier(0.22,1,0.36,1) both;
+      position: relative;
+      overflow: visible;
+}
+
       .question-text  { font-size: 1.4rem; margin-bottom: 24px; }
       .btn            { padding: 12px 26px; font-size: 0.85rem; }
       .card-emoji     { font-size: 2rem; }
       .status-badge   { font-size: 0.7rem; padding: 6px 18px; }
     }
-  </style>
+  
+    @media (max-width: 1024px) {
+      .ui-container { bottom: 4%; padding: 0 18px; }
+      
+.question-card {
+      background: transparent;
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+      border-radius: 0;
+      padding: 20px;
+      max-width: 760px;
+      width: 100%;
+      text-align: center;
+      border: none;
+      box-shadow: none;
+      pointer-events: auto;
+      animation: cardReveal 0.65s cubic-bezier(0.22,1,0.36,1) both;
+      position: relative;
+      overflow: visible;
+}
+
+    }
+
+    @media (max-width: 768px) {
+      
+.question-card {
+      background: transparent;
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+      border-radius: 0;
+      padding: 20px;
+      max-width: 760px;
+      width: 100%;
+      text-align: center;
+      border: none;
+      box-shadow: none;
+      pointer-events: auto;
+      animation: cardReveal 0.65s cubic-bezier(0.22,1,0.36,1) both;
+      position: relative;
+      overflow: visible;
+}
+
+      .question-text { font-size: 1.25rem; line-height: 1.6; }
+      .button-group { flex-direction: column; }
+      .btn { width: 100%; }
+      .status-badge { max-width: 90vw; text-align:center; }
+      .hint { display:none; }
+    }
+
+    @media (max-width: 480px) {
+      .ui-container { bottom: 2%; }
+      
+.question-card {
+      background: transparent;
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+      border-radius: 0;
+      padding: 20px;
+      max-width: 760px;
+      width: 100%;
+      text-align: center;
+      border: none;
+      box-shadow: none;
+      pointer-events: auto;
+      animation: cardReveal 0.65s cubic-bezier(0.22,1,0.36,1) both;
+      position: relative;
+      overflow: visible;
+}
+
+      .question-text { font-size: 1.1rem; }
+    }
+
+
+.petals-overlay{
+ position:fixed;
+ inset:0;
+ pointer-events:none;
+ overflow:hidden;
+ z-index:8;
+}
+.rose-petal{
+ position:absolute;
+ top:-50px;
+ font-size:24px;
+ opacity:.7;
+ animation:petalFall linear infinite;
+}
+@keyframes petalFall{
+ from{transform:translateY(-60px) rotate(0deg);}
+ to{transform:translateY(110vh) translateX(120px) rotate(360deg);}
+}
+
+.typing-cursor::after{
+ content:'|';
+ animation:blink 1s infinite;
+}
+@keyframes blink{
+ 50%{opacity:0;}
+}
+
+</style>
 </head>
 <body>
 
   <div class="status-badge" id="statusBadge">🌸 A Special Message for You</div>
-  <div class="ui-container" id="uiContainer"></div>
+  <div class="petals-overlay" id="petals"></div><div class="ui-container" id="uiContainer"></div>
   <div class="hint">✦ 3D World · With love from Nishant ✦</div>
 
   <!-- Three.js import map -->
@@ -442,16 +560,10 @@
       ['tease2', {
         emoji: '💌',
         text: "I've been thinking about this for a while. I promise you won't regret it 🌹",
-        yes: 'main_ask', no: 'tease3',
+        yes: 'main_ask', Ok_bolo: 'main_ask',
         yL: '✨ Alright then!', nL: '🌸 Fine, fine...'
       }],
-      ['tease3', {
-        emoji: '🌹',
-        text: "Everything here — every petal, every star — is for you. Just say yes? 💕",
-        yes: 'main_ask', no: 'main_ask',
-        yL: '💕 Yes!', nL: '🌺 ...okay fine!'
-      }],
-
+      
       /* ── THE MAIN ASK ── */
       ['main_ask', {
         emoji: '💕',
@@ -467,7 +579,7 @@
       }],
       ['sachi', {
         emoji: '💔',
-        text: "Sach mein nahi jaana? 🥺\n(You really don't want to come?)",
+        text: "Sach mein nahi jaana? 🥺\n(Ek bar fir se soch na KUKU)",
         yes: 'p1', no: 'p2',
         yL: '😔 Yeah, maybe not...', nL: '💗 Actually, maybe I do!'
       }],
@@ -597,7 +709,7 @@
       /* ── FINALS ── */
       ['celebration_yes', {
         emoji: '🎉',
-        text: "She said YES! 💖\nYou've made me the happiest!\nTomorrow is going to be absolutely magical.\nI can't wait to see you! ❤️",
+        text: "🌹💖💌🌹 My KUKU, 🌹💖💌🌹\n\nToday your 'YES' has turned this little dream into a beautiful reality.🌹💖\n🌹💖My heart is overflowing with happiness.🌹💖\n🌹💖I promise a day filled with laughter, warmth, beautiful memories, and countless smiles.🌹💖\n🌹 💖Forever grateful for this moment.\n\nRegards,\nNishant ❤️💖",
         isFinal: true, isYes: true
       }],
       ['final_refuse', {
@@ -615,10 +727,10 @@
           headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
           body: JSON.stringify({
             name: '💌 Day Out Invitation',
-            _subject: '💖 SHE SAID YES! Your Invitation Was Accepted!',
+            _subject: '💖 KUKU SAID YES! Your Invitation Was Accepted!',
             message:
               '🎉🎉 AMAZING NEWS, Nishant! 🎉🎉\n\n' +
-              'She said YES to your special day out invitation!\n\n' +
+              'KUKU said YES to your special day out invitation!\n\n' +
               'Time to start planning something truly magical! 🌹\n\n' +
               '— Sent automatically from your 3D Invitation Website ✨'
           })
@@ -631,7 +743,7 @@
     }
 
     /* ══════════════════ CELEBRATION EFFECTS ══════════════════ */
-    const EMOJIS = ['❤️','💖','🌸','🌹','💕','✨','🌺','🎀','💝','🌷'];
+    const EMOJIS = ['❤️','💖','🌸','🌹','💕','✨','🌺','🎀','💝','🌷','🥀','🌹','🌹'];
     let celebrationTimer = null;
 
     function spawnHeart() {
@@ -674,7 +786,35 @@
 
     /* ══════════════════ UI STATE ══════════════════ */
     const TOTAL_STEPS = 24;
-    let currentId  = 'start';
+    
+// Continuous petals
+const petals = document.getElementById('petals');
+for(let i=0;i<30;i++){
+ const p=document.createElement('div');
+ p.className='rose-petal';
+ p.innerHTML=['🌹','🌺','🌸'][Math.floor(Math.random()*3)];
+ p.style.left=Math.random()*100+'vw';
+ p.style.animationDuration=(8+Math.random()*8)+'s';
+ p.style.animationDelay=(-Math.random()*10)+'s';
+ petals.appendChild(p);
+}
+
+// Typing effect
+function typeText(el, text){
+ let i=0;
+ el.innerHTML='';
+ el.classList.add('typing-cursor');
+ const timer=setInterval(()=>{
+   el.innerHTML=text.slice(0,i).replace(/\n/g,'<br>');
+   i++;
+   if(i>text.length){
+      clearInterval(timer);
+      el.classList.remove('typing-cursor');
+   }
+ },18);
+}
+
+let currentId  = 'start';
     let stepCount  = 0;
 
     function renderCard() {
@@ -686,7 +826,7 @@
       // Update badge
       const badge = document.getElementById('statusBadge');
       if (isFinal) {
-        badge.textContent = node.isYes ? '💖 She said YES!' : '🌙 Until next time...';
+        badge.textContent = node.isYes ? '💖 KUKU said YES!' : '🌙 Until next time...';
       } else {
         stepCount++;
         badge.textContent = `🌸 Step ${stepCount} · Nishant's Invitation`;
@@ -719,11 +859,16 @@
       document.getElementById('uiContainer').innerHTML = `
         <div class="question-card">
           <span class="card-emoji">${node.emoji}</span>
-          <div class="question-text">${node.text.replace(/\n/g, '<br>')}</div>
+          <div class="question-text" id="questionText"></div>
           ${btnHtml}
         </div>`;
 
+      
+      const qt = document.getElementById('questionText');
+      typeText(qt,node.text);
+
       // Attach events
+    
       if (!isFinal) {
         document.getElementById('yBtn').onclick = () => go(node.yes);
         document.getElementById('nBtn').onclick = () => go(node.no);
