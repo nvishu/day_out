@@ -553,9 +553,9 @@
       }],
       ['tease1', {
         emoji: '🥺',
-        text: "Oh come on! I built this whole little pink world just for you... Peek inside?",
+        text: "Suno to sahi, I built this whole little pink world just for you... Peek inside?",
         yes: 'main_ask', no: 'tease2',
-        yL: '💖 Okay, go ahead!', nL: '😶 One moment...'
+        yL: '💖 Okay, go ahead!', nL: '😶 Tell me more.....'
       }],
       ['tease2', {
         emoji: '💌',
@@ -637,7 +637,7 @@
         emoji: '🌊',
         text: "We can walk by the water, feel the breeze...\njust breathe and enjoy the world together 🌊",
         yes: 'celebration_yes', no: 'p10',
-        yL: '💕 Let\'s do it!', nL: '😶 Hmm...'
+        yL: '💕 Let\'s do it!', nL: '😶 Water se mujhe prblm hai.'
       }],
       ['p10', {
         emoji: '🎨',
@@ -743,12 +743,12 @@
     }
 
     /* ══════════════════ CELEBRATION EFFECTS ══════════════════ */
-    const EMOJIS = ['❤️','💖','🌸','🌹','💕','✨','🌺','🎀','💝','🌷','🥀','🌹','🌹'];
+    const EMOJIS = ['❤️','💖','🌸','🌹','💕','✨','🌺','🎀','💝','🌷','🥀','❤️','💖','🌸','🌹','💕','🌹','🌹','❤️','💖','🌸','🌹','💕',];
     let celebrationTimer = null;
 
     function spawnHeart() {
       const el = document.createElement('span');
-      const size = 14 + Math.random() * 24;
+      const size = 15 + Math.random() * 24;
       const dur  = 3.5 + Math.random() * 3;
       const drift = ((Math.random() - 0.5) * 200) + 'px';
       const spin  = ((Math.random() - 0.5) * 540) + 'deg';
@@ -829,7 +829,7 @@ let currentId  = 'start';
         badge.textContent = node.isYes ? '💖 KUKU said YES!' : '🌙 Until next time...';
       } else {
         stepCount++;
-        badge.textContent = `🌸 Step ${stepCount} · Nishant's Invitation`;
+        badge.textContent = `🌸 Step ${stepCount} · A CUTE💖REQUEST FROM NISHANT`;
       }
 
       // Build dots
