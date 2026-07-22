@@ -720,8 +720,11 @@
     ]);
 
     /* ══════════════════ EMAIL NOTIFICATION ══════════════════ */
-    async function notifyNvishu() {
+    async function notifyNvishu(finalQuestionText, finalQuestionEmoji) {
       try {
+        const questionLine = finalQuestionText
+          ? `${finalQuestionEmoji || '💌'} The question she said YES to:\n"${finalQuestionText.replace(/\n/g, ' ')}"\n\n`
+          : '';
         const res = await fetch('https://formsubmit.co/ajax/nishantvishu55@gmail.com', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
@@ -731,6 +734,7 @@
             message:
               '🎉🎉 AMAZING NEWS, Nvishu! 🎉🎉\n\n' +
               'KUKU said YES to your special day out invitation!\n\n' +
+              questionLine +
               'Time to start planning something truly magical! 🌹\n\n' +
               '— Sent automatically from your 3D Invitation Website ✨'
           })
@@ -816,6 +820,8 @@ function typeText(el, text){
 
 let currentId  = 'start';
     let stepCount  = 0;
+    let lastYesQuestionText  = '';
+    let lastYesQuestionEmoji = '';
 
     function renderCard() {
       const node = Q.get(currentId);
@@ -870,17 +876,23 @@ let currentId  = 'start';
       // Attach events
     
       if (!isFinal) {
-        document.getElementById('yBtn').onclick = () => go(node.yes);
+        document.getElementById('yBtn').onclick = () => {
+          lastYesQuestionText  = node.text;
+          lastYesQuestionEmoji = node.emoji;
+          go(node.yes);
+        };
         document.getElementById('nBtn').onclick = () => go(node.no);
       } else {
         document.getElementById('restartBtn').onclick = () => {
           currentId = 'start'; stepCount = 0;
+          lastYesQuestionText  = '';
+          lastYesQuestionEmoji = '';
           stopCelebration();
           renderCard();
         };
         if (node.isYes) {
           startCelebration();
-          notifyNvishu();
+          notifyNvishu(lastYesQuestionText, lastYesQuestionEmoji);
         }
       }
     }
